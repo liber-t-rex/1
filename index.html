@@ -148,6 +148,19 @@
             margin: 60px auto;
         }
         
+        .intro-text {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(0, 102, 204, 0.05);
+            border-left: 4px solid #0066cc;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
         .section-title {
             font-size: 32px;
             font-weight: 800;
@@ -217,6 +230,8 @@
             font-weight: 600;
             cursor: pointer;
             display: inline-block;
+            text-decoration: none;
+            transition: color 0.3s;
         }
         
         .card-link:hover {
@@ -416,6 +431,11 @@
             .beta-buttons {
                 flex-direction: column;
             }
+            
+            .intro-text {
+                padding: 24px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -444,6 +464,11 @@
     </div>
 </div>
 
+<!-- INTRO TEXT SECTION -->
+<div class="intro-text">
+    A whole network that is thus transforming the infrastructure, the tools, the security, the business model, in the new communities with internal eco-systems while supporting French and European sovereignty.
+</div>
+
 <!-- SECTION 1: VISION / MADE.FR / PLAN -->
 <div class="container section" id="section1">
     <h2 class="section-title">Strategy & Vision</h2>
@@ -452,7 +477,7 @@
             <div class="card-icon">🚨</div>
             <h3>Our Vision</h3>
             <div class="tagline">Digital Sovereignty</div>
-            <p>Europe must choose: continue as a colony of GAFAM & China, or build infrastructure to own the future. CircularOS is the sovereign, distributed operating system allowing Europe to circulate resources, data, and values freely—without external dependence.</p>
+            <p>Europe must choose: continue as a colony of GAFAM & China, or build infrastructure to own the future. CircularOS is the sovereign, distributed operating system allowing Europe to circulate resources, data, and values freely without external dependence.</p>
             <span class="card-link">Read Full Vision →</span>
         </div>
         
@@ -460,7 +485,7 @@
             <div class="card-icon">🏪</div>
             <h3>Made.fr</h3>
             <div class="tagline">Industrial Renaissance</div>
-            <p>The flagship infrastructure for manufacturing sovereignty. Federating French artisans, SMEs, and startups to reclaim global markets. Made.fr transforms "Marque France" into a tangible economic asset—proving France is the green and smart factory of Europe.</p>
+            <p>The flagship infrastructure for manufacturing sovereignty. Federating French artisans, SMEs, and startups to reclaim global markets. Made.fr transforms "Marque France" into a tangible economic asset proving France is the green and smart factory of Europe.</p>
             <span class="card-link">Discover Made.fr →</span>
         </div>
         
@@ -483,7 +508,7 @@
             <h3>Achats.eco</h3>
             <div class="tagline">Democratic Procurement</div>
             <p>Democratizes government procurement and breaks the monopoly of giants. Enables SME grouping (co-contracting) so municipalities and enterprises source locally at fair prices. Every euro spent stays in territory.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://achats.eco" target="_blank" class="card-link">Discover →</a>
         </div>
         
         <div class="card">
@@ -491,15 +516,15 @@
             <h3>ImpactData.fr</h3>
             <div class="tagline">Infrastructure of Truth</div>
             <p>Real-time SaaS API replacing greenwashing with numeric proof. Every product, every company verified through state data (ADEME, INAO, Infogreffe) + certified impact metrics. Trust becomes visible and verifiable.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://impactdata.fr" target="_blank" class="card-link">Discover →</a>
         </div>
         
         <div class="card">
             <div class="card-icon">🏭</div>
             <h3>Fournisseurs.eco</h3>
             <div class="tagline">Trusted Supplier Index</div>
-            <p>Dynamic database of virtuous European suppliers. Powered by ImpactData, it makes supply chains resilient by making suppliers visible—no more hiding behind intermediaries. Industrial resilience through transparency.</p>
-            <span class="card-link">Discover →</span>
+            <p>Dynamic database of virtuous European suppliers. Powered by ImpactData, it makes supply chains resilient by making suppliers visible no more hiding behind intermediaries. Industrial resilience through transparency.</p>
+            <a href="https://fournisseurs.eco" target="_blank" class="card-link">Discover →</a>
         </div>
     </div>
 </div>
@@ -513,7 +538,7 @@
             <h3>Made.Paris</h3>
             <div class="tagline">Parisian Excellence</div>
             <p>Marketplace of short-circuit innovation. 8,000+ producers, €450M+ annual transactions. Direct B2C & B2B sales without abusive commissions. 85% of value stays in Paris region. Connects artisans from Faubourg Saint-Antoine to global markets.</p>
-            <span class="card-link">Join →</span>
+            <a href="https://made.paris" target="_blank" class="card-link">Join →</a>
         </div>
         
         <div class="card">
@@ -521,7 +546,7 @@
             <h3>Made.Alsace</h3>
             <div class="tagline">Border Advantage</div>
             <p>Tri-border platform connecting precision manufacturing, chemical innovation, and textile heritage. 2,100+ producers, €520M annual transactions. 40% cross-border trade. Central European hub for logistics and advanced materials.</p>
-            <span class="card-link">Join →</span>
+            <a href="https://made.alsace" target="_blank" class="card-link">Join →</a>
         </div>
         
         <div class="card">
@@ -529,7 +554,7 @@
             <h3>Made.Bzh</h3>
             <div class="tagline">Maritime & Agricultural</div>
             <p>Lighthouse of Breton sovereignty. 3,200+ producers, €380M agrifood value. Brings land and sea together: farmers, fishermen, shipyards on one marketplace. Fair remuneration for producers, disintermediation of chains.</p>
-            <span class="card-link">Join →</span>
+            <a href="https://made.bzh" target="_blank" class="card-link">Join →</a>
         </div>
     </div>
 </div>
@@ -543,7 +568,7 @@
             <h3>Life.Paris</h3>
             <div class="tagline">Reality Gaming Platform</div>
             <p>Transform Paris into a useful playground where each quest has real impact. Players explore neighborhoods, discover artisans, interact with Made.Paris shops. Educational tool connecting young people to local professions in tension via gamified challenges.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://life.paris" target="_blank" class="card-link">Discover →</a>
         </div>
         
         <div class="card">
@@ -551,7 +576,7 @@
             <h3>Life.Alsace</h3>
             <div class="tagline">Heritage & Industry</div>
             <p>Playful immersion in cultural heritage and regional industry. Users explore Alsatian legends, discover manufacturing processes, validate technical skills through play. Direct pathways to learning and employment in precision manufacturing and craftsmanship.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://life.alsace" target="_blank" class="card-link">Discover →</a>
         </div>
         
         <div class="card">
@@ -559,7 +584,7 @@
             <h3>Life.Bzh</h3>
             <div class="tagline">Land & Sea Adventure</div>
             <p>Immersive experience protecting Breton heritage. Environmental protection, agriculture, maritime economies at heart of gameplay. Users manage virtual farms and ships based on real data. Combat rural desertification through interactive engagement.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://life.bzh" target="_blank" class="card-link">Discover →</a>
         </div>
     </div>
 </div>
@@ -573,7 +598,7 @@
             <h3>Smart.Paris</h3>
             <div class="tagline">Urban Intelligence Cockpit</div>
             <p>Digital twin aggregating billions of data points (transport, energy, economy, air quality). Real-time visualization for decision makers, businesses, citizens. Travel through time to see city evolution. Make informed collective decisions for a more efficient metropolis.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://smart.paris" target="_blank" class="card-link">Discover →</a>
         </div>
         
         <div class="card">
@@ -581,7 +606,7 @@
             <h3>Smart.Alsace</h3>
             <div class="tagline">Industrial Intelligence</div>
             <p>Strategic management platform visualizing cross-border industrial, logistics, and energy flows. Identify industrial symbiosis opportunities. Optimize transport networks. Monitor energy and food autonomy in real-time. Tool for regional sovereignty.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://smart.alsace" target="_blank" class="card-link">Discover →</a>
         </div>
         
         <div class="card">
@@ -589,7 +614,7 @@
             <h3>Smart.Bzh</h3>
             <div class="tagline">Environmental Monitoring</div>
             <p>Digital watch for natural and maritime resources. Monitors coastal health, water quality, agricultural activity via satellite and terrestrial data. Reconcile economic development with biodiversity preservation. Manage water resources predictively. Breton resilience tool.</p>
-            <span class="card-link">Discover →</span>
+            <a href="https://smart.bzh" target="_blank" class="card-link">Discover →</a>
         </div>
     </div>
 </div>
@@ -600,7 +625,7 @@
         <h2>Join the Movement</h2>
         <p>Become part of European digital sovereignty</p>
         <div class="tally-embed">
-            <iframe data-tally-src="https://tally.so/embed/ob6ByN?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" style="border: none; border-radius: 12px;"></iframe>
+            <iframe data-tally-src="https://tally.so/r/ob6ByN?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" style="border: none; border-radius: 12px;"></iframe>
             <script async src="https://app.tally.so/widgets/embed.js"></script>
         </div>
     </div>
@@ -625,7 +650,7 @@
                     <a href="https://github.com/liber-t-rex/CircularWeb" target="_blank" class="beta-btn-primary">
                         🔧 View Source Code (GitHub)
                     </a>
-                    <a href="https://circularos.eu" target="_blank" class="beta-btn-secondary">
+                    <a href="https://beta.circularos.eu" target="_blank" class="beta-btn-secondary">
                         ▶ Launch Beta OS
                     </a>
                 </div>
@@ -638,7 +663,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-content">
-        <strong>CircularOS.eu</strong> — An open-source initiative for European digital autonomy<br>
+        <strong>CircularOS.eu</strong> – An open-source initiative for European digital autonomy<br>
         Building the operating system of a regenerative, sovereign, and interconnected Europe.<br>
         © 2025 CircularOS
     </div>
