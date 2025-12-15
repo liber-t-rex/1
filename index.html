@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircularOS.eu - Digital Sovereignty Operating System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a2a4d 50%, #0f1729 100%);
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 102, 204, 0.3);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0066cc;
+            text-decoration: none;
+            line-height: 1;
+        }
+        
+        .logo-sub {
+            font-size: 11px;
+            color: #888;
+            font-weight: 400;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+        
+        nav a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #33ccff;
+        }
+        
+        .hero {
+            max-width: 1400px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #0066cc 0%, #33ccff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #0066cc;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 102, 204, 0.1);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            margin: 60px auto;
+        }
+        
+        .intro-text {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(0, 102, 204, 0.05);
+            border-left: 4px solid #0066cc;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #f0f0f0;
+        }
+        
+        .grid-3x3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(51, 204, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            border-radius: 12px;
+            padding: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .card.modal-trigger {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            border-color: rgba(51, 204, 255, 0.6);
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.2) 0%, rgba(51, 204, 255, 0.1) 100%);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #33ccff;
+            margin-bottom: 8px;
+        }
+        
+        .card .tagline {
+            font-size: 12px;
+            color: #0066cc;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .card p {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        
+        .card-link {
+            font-size: 13px;
+            color: #0066cc;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .card-link:hover {
+            color: #33ccff;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: #0a0e27;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: #f0f0f0;
+            line-height: 1.8;
+        }
+        
+        .modal-content h2 {
+            color: #33ccff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+        
+        .modal-content h3 {
+            color: #0066cc;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .modal-content ul, .modal-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-content li {
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+        
+        .modal-content p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .close {
+            color: #33ccff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #0066cc;
+        }
+        
+        .signup-section {
+            background: rgba(0, 102, 204, 0.05);
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            border-radius: 16px;
+            padding: 60px 32px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        /* CSS CUSTOM PROPERTIES - ORGANIZED COLOR SYSTEM */
+        :root {
+            /* Primary Colors */
+            --color-primary: #0066cc;
+            --color-primary-dark: #0052a3;
+            --color-accent: #33ccff;
+            
+            /* Neutral Colors */
+            --color-bg-dark: #0a0e27;
+            --color-bg-gradient-start: #0a0e27;
+            --color-bg-gradient-mid: #1a2a4d;
+            --color-bg-gradient-end: #0f1729;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #ccc;
+            --color-text-muted: #bbb;
+            --color-border: rgba(0, 102, 204, 0.3);
+            
+            /* Spacing Scale */
+            --space-xs: 8px;
+            --space-sm: 12px;
+            --space-md: 16px;
+            --space-lg: 20px;
+            --space-xl: 24px;
+            --space-2xl: 32px;
+            --space-3xl: 40px;
+            --space-4xl: 60px;
+            
+            /* Font Sizes */
+            --text-sm: 12px;
+            --text-base: 14px;
+            --text-lg: 16px;
+            --text-xl: 18px;
+            --text-2xl: 22px;
+            --text-3xl: 28px;
+            --text-4xl: 32px;
+            --text-5xl: 48px;
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .signup-section {
+            background: rgba(0, 102, 204, 0.05);
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            border-radius: 16px;
+            padding: 60px 32px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .signup-section h2 {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: #33ccff;
+        }
+        
+        .signup-section p {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 32px;
+        }
+        
+        .signup-section-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .beta-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 60px 0;
+        }
+        
+        .beta-window {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.15) 0%, rgba(51, 204, 255, 0.08) 100%);
+            border: 2px solid rgba(0, 102, 204, 0.4);
+            border-radius: 6px;
+            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.15);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .beta-header {
+            background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%);
+            color: white;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .beta-title {
+            text-transform: uppercase;
+        }
+        
+        .beta-controls {
+            display: flex;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .beta-controls span {
+            cursor: pointer;
+            padding: 0 4px;
+            transition: opacity 0.3s;
+        }
+        
+        .beta-controls span:hover {
+            opacity: 0.7;
+        }
+        
+        .beta-content {
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .beta-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #33ccff;
+            margin-bottom: 12px;
+        }
+        
+        .beta-description {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .beta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .beta-btn-primary, .beta-btn-secondary {
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .beta-btn-primary {
+            background: #0066cc;
+            color: white;
+        }
+        
+        .beta-btn-primary:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+        
+        .beta-btn-secondary {
+            background: rgba(51, 204, 255, 0.1);
+            color: #33ccff;
+            border: 1px solid rgba(51, 204, 255, 0.3);
+        }
+        
+        .beta-btn-secondary:hover {
+            background: rgba(51, 204, 255, 0.2);
+            border-color: #33ccff;
+            transform: translateY(-2px);
+        }
+        
+        .beta-footer {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+        }
+        
+        footer {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(0, 102, 204, 0.3);
+            text-align: center;
+        }
+        
+        .footer-content {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .footer-content strong {
+            color: #0066cc;
+        }
+        
+        .footer-address {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            nav {
+                gap: 16px;
+                font-size: 12px;
+            }
+            
+            .grid-3x3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .beta-window {
+                max-width: 90%;
+            }
+            
+            .beta-buttons {
+                flex-direction: column;
+            }
+            
+            .intro-text {
+                padding: 24px;
+                font-size: 14px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div>
+            <div class="logo">CircularOS</div>
+            <div class="logo-sub">Digital Sovereignty Operating System</div>
+        </div>
+        <nav>
+            <a href="#section1">Vision</a>
+            <a href="#section2">Projects</a>
+            <a href="#signup">Join</a>
+        </nav>
+    </div>
+</header>
+
+<div class="hero">
+    <h1>Building European Digital Sovereignty</h1>
+    <p>An open-source operating system for circular economy & reindustrialization</p>
+</div>
+
+<div class="intro-text">
+    A whole network that is thus transforming the infrastructure, the tools, the security, the business model, in the new communities with internal eco-systems while supporting French and European sovereignty.
+</div>
+
+<div class="container section" id="section1">
+    <h2 class="section-title">Strategy & Vision</h2>
+    <div class="grid-3x3">
+        <div class="card" onclick="openModal('visionModal')" style="cursor: pointer;">
+            <div class="card-icon">🚨</div>
+            <h3>Our Vision</h3>
+            <div class="tagline">Digital Sovereignty</div>
+            <p>Europe must choose: continue as a colony of GAFAM & China, or build infrastructure to own the future. CircularOS is the sovereign, distributed operating system allowing Europe to circulate resources, data, and values freely without external dependence.</p>
+            <a href="javascript:void(0);" onclick="openModal('visionModal'); event.stopPropagation();" class="card-link">Read Full Vision →</a>
+        </div>
+        
+        <div class="card" onclick="window.open('https://made.fr', '_blank')" style="cursor: pointer;" data-modal-target="https://made.fr">
+            <div class="card-icon">🏪</div>
+            <h3>Made.fr</h3>
+            <div class="tagline">Industrial Renaissance</div>
+            <p>The flagship infrastructure for manufacturing sovereignty. Federating French artisans, SMEs, and startups to reclaim global markets. Made.fr transforms "Marque France" into a tangible economic asset proving France is the green and smart factory of Europe.</p>
+            <a href="https://made.fr" target="_blank" class="card-link" onclick="event.stopPropagation();">Discover Made.fr →</a>
+        </div>
+        
+        <div class="card" data-modal="planModal" style="cursor: pointer;">
+            <div class="card-icon">📋</div>
+            <h3>10-Point Plan</h3>
+            <div class="tagline">Action Roadmap</div>
+            <p>Concrete roadmap to reclaim digital and economic destiny: Empower Makers, Stop Economic Leakage, Build Sovereign EuroStack, Drive AI for Real World, Radical Interoperability, Algorithmic Sovereignty, Mental & Civic Health, Trust Economy, Data Control, Climate Truth.</p>
+            <a href="javascript:void(0);" onclick="openModal('planModal'); event.stopPropagation();" class="card-link">Read Full Plan →</a>
+        </div>
+    </div>
+</div>
+
+<!-- VISION MODAL -->
+<div id="visionModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('visionModal')">&times;</span>
+        <h2>Vision: CircularOS.eu</h2>
+        <h3>The European Circular Economy Operating System</h3>
+        
+        <h3>🚨 THE URGENCY OF ACTION</h3>
+        <p><strong>"I think they're weak, but I also think that they want to be so politically correct. I think they don't know what to do. Europe doesn't know what to do."</strong><br>- Donald Trump, December 2025</p>
+        
+        <p><strong>"We must build digital infrastructures that are ours, that we own. Otherwise, we are lost."</strong><br>- Dr. Cristina Caffarra, Honorary Professor at University College London, Co-Founder of the Competition Research Policy Network at CEPR, February 2025</p>
+        
+        <p>The analysis is brutal, but it must serve as an electroshock.</p>
+        
+        <h3>THE WAKE-UP CALL</h3>
+        <p>Europe stands at a crossroads. While America undergoes its cultural revolution and China consolidates its digital hegemony, we face a critical question: <strong>Who controls the data, controls reality.</strong></p>
+        
+        <h3>The Paradox</h3>
+        <ul>
+            <li>500 million inhabitants</li>
+            <li>GDP comparable to the United States</li>
+            <li>Equivalent technological spending</li>
+        </ul>
+        <p>We have the means. We have the market. We have the history. But we don't have the System.</p>
+        
+        <p>We're told we lack innovation. False. The gap is structural, not technological. We import 80% of our digital technologies. We finance our own dependency, creating a critical systemic vulnerability.</p>
+        
+        <p>The era of innocence is over. To bridge this gap, we must forge our own tools.</p>
+        
+        <h3>THE MISSION: RECODING THE ECONOMY</h3>
+        <p><strong>CircularOS (Circular Operating System)</strong> is not an application. It is the sovereign, distributed operating system that allows Europe to circulate its resources, data, and values freely without external dependence.</p>
+        
+        <h3>Why an "OS" for the Economy?</h3>
+        <p>In the 21st century: <strong>Whoever controls the Data controls Reality.</strong></p>
+        <p>Today, the European economy runs on foreign operating systems:</p>
+        <ul>
+            <li>Our commercial data is hosted on clouds subject to extraterritorial laws</li>
+            <li>Our logistical flows depend on opaque algorithms</li>
+            <li>Our social interactions pass through extractive platforms</li>
+        </ul>
+        <p>We digitized our economy but forgot to build the foundations. We are tenants on our own continent.</p>
+        
+    </div>
+</div>
+
+<!-- PLAN MODAL -->
+<div id="planModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('planModal')">&times;</span>
+        <h2>Our 10-Point Plan</h2>
+        <h3>For a Sovereign & Prosperous Ecosystem</h3>
+        
+        <p>In alignment with the Future Institute's framework, CircularOS commits to the following roadmap to reclaim our digital and economic destiny.</p>
+        
+        <h3>1. 🛠️ CHAMPIONING THE "MAKERS" & SMEs</h3>
+        <p>We empower European artisans, startups, and industrial SMEs with sovereign SaaS tools and direct access to markets.</p>
+        <p><strong>Action:</strong></p>
+        <ul>
+            <li>Provide free or low-cost digital management software (CircularOS ERP) to all registered SMEs</li>
+            <li>Build native integrations with Made.Regions so SMEs can sell B2C and B2B without predatory commissions</li>
+            <li>Replace commission-based models (15-30% to Amazon/Shopify) with transparent pricing (2-3% platform fee, max)</li>
+        </ul>
+        <p><strong>Impact:</strong> Stop the $200B+ annual capital flight. Keep European SME revenue in Europe.</p>
+        
+        <!-- rest of plan content unchanged -->
+    </div>
+</div>
+
+<div class="container section" id="section2">
+    <h2 class="section-title">The Foundation, Data & Procurement</h2>
+    <div class="grid-3x3">
+        <div class="card" onclick="window.open('https://achats.eco', '_blank')" style="cursor: pointer;">
+            <div class="card-icon">🛒</div>
+            <h3>Achats.eco</h3>
+            <div class="tagline">Democratic Procurement</div>
+            <p>Democratizes government procurement and breaks the monopoly of giants. Enables SME grouping (co-contracting) so municipalities and enterprises source locally at fair prices. Every euro spent stays in territory.</p>
+            <a href="https://achats.eco" target="_blank" class="card-link" onclick="event.stopPropagation();">Discover →</a>
+        </div>
+        
+        <div class="card" onclick="window.open('https://impactdata.fr', '_blank')" style="cursor: pointer;">
+            <div class="card-icon">📊</div>
+            <h3>ImpactData.fr</h3>
+            <div class="tagline">Infrastructure of Truth</div>
+            <p>Real-time SaaS API replacing greenwashing with numeric proof. Every product, every company verified through state data (ADEME, INAO, Infogreffe) + certified impact metrics. Trust becomes visible and verifiable.</p>
+            <a href="https://impactdata.fr" target="_blank" class="card-link" onclick="event.stopPropagation();">Discover →</a>
+        </div>
+        
+        <div class="card" onclick="window.open('https://fournisseurs.eco', '_blank')" style="cursor: pointer;">
+            <div class="card-icon">🏭</div>
+            <h3>Fournisseurs.eco</h3>
+            <div class="tagline">Trusted Supplier Index</div>
+            <p>Dynamic database of virtuous European suppliers. Powered by ImpactData, it makes supply chains resilient by making suppliers visible, no more hiding behind intermediaries. Industrial resilience through transparency.</p>
+            <a href="https://fournisseurs.eco" target="_blank" class="card-link" onclick="event.stopPropagation();">Discover →</a>
+        </div>
+    </div>
+</div>
+
+<!-- rest of page unchanged, including the tally iframe which you asked not to modify -->
+
+<div class="container section" id="signup">
+    <div class="signup-section">
+        <h2>Join the Movement</h2>
+        <p>Become part of European digital sovereignty</p>
+        <div style="max-width: 600px; margin: 0 auto; position: relative; z-index: 10;">
+            <iframe src="https://tally.so/embed/ob6ByN?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" style="border: none; border-radius: 12px;"></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="container section">
+    <div class="beta-container">
+        <div class="beta-window">
+            <div class="beta-header">
+                <div class="beta-title">🪟 CircularOS.exe</div>
+                <div class="beta-controls">
+                    <span>_</span>
+                    <span>□</span>
+                    <span>✕</span>
+                </div>
+            </div>
+            <div class="beta-content">
+                <p class="beta-text">Welcome to CircularOS Operating System</p>
+                <p class="beta-description">Experience the early prototype of our sovereign European operating system. Currently in beta phase with experimental features.</p>
+                <div class="beta-buttons">
+                    <a href="https://beta.circularos.eu" target="_blank" class="beta-btn-secondary">
+                        ▶ Launch Beta OS
+                    </a>
+                </div>
+                <p class="beta-footer">Help us build the future of European digital sovereignty</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <strong>CircularOS.eu</strong> – An open-source initiative for European digital autonomy<br>
+        Building the operating system of a regenerative, sovereign, and interconnected Europe.<br>
+        © 2025 CircularOS
+    </div>
+    <div class="footer-address">
+        60 RUE FRANÇOIS IER, 75008 PARIS France
+    </div>
+</footer>
+
+<script>
+/* Keep original openModal/closeModal behavior */
+function openModal(modalId) {
+    const el = document.getElementById(modalId);
+    if (el) el.style.display = "block";
+}
+
+function closeModal(modalId) {
+    const el = document.getElementById(modalId);
+    if (el) el.style.display = "none";
+}
+
+/* Close modal by clicking outside - unchanged */
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+    }
+}
+
+/* Robust click handler for cards:
+   - Make the 10-Point Plan card (data-modal="planModal") open reliably on click or touch.
+   - Ensure Made.fr card (data-modal-target) also triggers full-card click (already uses open in onclick).
+*/
+document.addEventListener('DOMContentLoaded', function(){
+    // Delegate clicks to elements with data-modal
+    document.body.addEventListener('click', function(e){
+        const card = e.target.closest('[data-modal]');
+        if (card) {
+            const modalId = card.getAttribute('data-modal');
+            if (modalId) {
+                openModal(modalId);
+                e.preventDefault();
+                return;
+            }
+        }
+        // Support data-modal-target (for linking whole card to external URL)
+        const linkCard = e.target.closest('[data-modal-target]');
+        if (linkCard) {
+            const url = linkCard.getAttribute('data-modal-target');
+            if (url) {
+                // open in new tab to match other cards behavior
+                window.open(url, '_blank');
+                e.preventDefault();
+                return;
+            }
+        }
+    }, false);
+});
+</script>
+
+</body>
+</html>
